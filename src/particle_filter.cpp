@@ -4,8 +4,6 @@
  *  Created on: Dec 12, 2016
  *      Author: Tiffany Huang
  */
-
-#include <random>
 #include <algorithm>
 #include <iostream>
 #include <numeric>
@@ -24,7 +22,6 @@ void ParticleFilter::init(double x, double y, double theta, double std[]) {
   //   x, y, theta and their uncertainties from GPS) and all weights to 1.
   // Add random Gaussian noise to each particle.
   // NOTE: Consult particle_filter.h for more information about this method (and others in this file).
-  default_random_engine gen;
   double std_x, std_y, std_theta;
 
   num_particles = 100;
@@ -58,7 +55,6 @@ void ParticleFilter::prediction(double delta_t, double std_pos[], double velocit
   // NOTE: When adding noise you may find std::normal_distribution and std::default_random_engine useful.
   //  http://en.cppreference.com/w/cpp/numeric/random/normal_distribution
   //  http://www.cplusplus.com/reference/random/default_random_engine/
-  default_random_engine gen;
   double std_x, std_y, std_theta;
 
   std_x = std_pos[0];
@@ -188,7 +184,6 @@ void ParticleFilter::resample() {
   // Resample particles with replacement with probability proportional to their weight.
   // NOTE: You may find std::discrete_distribution helpful here.
   //   http://en.cppreference.com/w/cpp/numeric/random/discrete_distribution
-  default_random_engine gen;
   discrete_distribution<int> distribution(weights.begin(), weights.end());
 
   vector<Particle> resample_particles;
